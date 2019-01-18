@@ -4,38 +4,53 @@ using UnityEngine.EventSystems;
 
 public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler {
 
+
+    public Transform listElementPrefab;
+
     [HideInInspector]
     public Transform parentToReturnTo;
     [HideInInspector]
     public Transform placeHolderParent;
+    [HideInInspector]
+    public GameObject replacingListItem;
 
-    private GameObject placeHolder;
-
-    public void OnBeginDrag(PointerEventData eventData) {
-        placeHolder = new GameObject();
-        placeHolder.transform.SetParent(transform.parent );
-        LayoutElement le = placeHolder.AddComponent<LayoutElement>();
-        le.preferredWidth = GetComponent<LayoutElement>().preferredWidth;
-        le.preferredHeight = GetComponent<LayoutElement>().preferredHeight;
-        le.flexibleWidth = 0;
-        le.flexibleHeight = 0;
-
-        placeHolder.transform.SetSiblingIndex(transform.GetSiblingIndex() );
-
-        parentToReturnTo = transform.parent;
-        placeHolderParent = parentToReturnTo;
-        transform.SetParent(transform.parent.parent);
-
-        GetComponent<CanvasGroup>().blocksRaycasts = false;
+    void Awake()
+    { 
     }
 
-    public void OnDrag(PointerEventData eventData) {
+    public void OnBeginDrag(PointerEventData eventData) {
+
+        if (this.GetComponent<ElementPropertyManager>().elementProperties.elementState == ElementState.notInAnyList)
+        {
+            replacingListItem = Instantiate(this.gameObject, this.transform.parent);
+            replacingListItem.AddComponent<ElementPropertyManager>();
+            replacingListItem.GetComponent<ElementPropertyManager>().elementProperties = this.GetComponent<ElementPropertyManager>().elementProperties;
+
+            //replacingListItem.transform.SetParent(transform.parent);
+            //LayoutElement le = replacingListItem.AddComponent<LayoutElement>();
+            //le.preferredWidth = GetComponent<LayoutElement>().preferredWidth;
+            //le.preferredHeight = GetComponent<LayoutElement>().preferredHeight;
+            //le.flexibleWidth = 0;
+            //le.flexibleHeight = 0;
+
+            replacingListItem.transform.SetSiblingIndex(transform.GetSiblingIndex());
+
+            parentToReturnTo = transform.parent;
+            placeHolderParent = parentToReturnTo;
+            transform.SetParent(transform.parent.parent);
+
+            GetComponent<CanvasGroup>().blocksRaycasts = false;    
+        }
+    }
+
+    public void OnDrag(PointerEventData eventData) 
+    {
         transform.position = eventData.position;
 
-        if (placeHolder.transform.parent != placeHolderParent)
-        {
-            placeHolder.transform.SetParent(placeHolderParent);
-        }
+        //if (replacingListItem.transform.parent != placeHolderParent)
+        //{
+        //    replacingListItem.transform.SetParent(placeHolderParent);
+        //}
         
         int newSiblingIndex = placeHolderParent.childCount;
 
@@ -46,19 +61,21 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             {
                 newSiblingIndex = i;
 
-                if (placeHolder.transform.GetSiblingIndex() < newSiblingIndex)
-                    newSiblingIndex--;                
+                //if (replacingListItem.transform.GetSiblingIndex() < newSiblingIndex)
+                    //newSiblingIndex--;                
                 break;
             }
         }
 
-        placeHolder.transform.SetSiblingIndex(newSiblingIndex);
+        //replacingListItem.transform.SetSiblingIndex(newSiblingIndex);
     }
 
     public void OnEndDrag(PointerEventData eventData) {
         transform.SetParent(parentToReturnTo);
-        transform.SetSiblingIndex(placeHolder.transform.GetSiblingIndex());
+        transform.SetSiblingIndex(replacingListItem.transform.GetSiblingIndex());
         GetComponent<CanvasGroup>().blocksRaycasts = true;
-        Destroy(placeHolder);
+
+        if (this.GetComponent<ElementPropertyManager>().elementProperties.elementState == ElementState.isRemoved)
+            Destroy(replacingListItem);
     }
 }

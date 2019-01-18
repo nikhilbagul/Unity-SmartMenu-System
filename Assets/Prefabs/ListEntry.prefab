@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f99c8672a14b4cf48b9b0d28a56d9e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemID: 0
   parentToReturnTo: {fileID: 0}
   placeHolderParent: {fileID: 0}
 --- !u!114 &114789647009903994
@@ -139,7 +140,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Song 1
+  m_Text: Song
 --- !u!222 &222791697650799728
 CanvasRenderer:
   m_ObjectHideFlags: 1
