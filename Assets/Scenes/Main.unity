@@ -420,6 +420,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114332055987025258, guid: 5f722d6a84e5af441a017ad2f9cfcb9a,
+        type: 2}
+      propertyPath: m_LayoutPriority
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f722d6a84e5af441a017ad2f9cfcb9a, type: 2}
   m_IsPrefabAsset: 0
@@ -651,6 +656,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114332055987025258, guid: 5f722d6a84e5af441a017ad2f9cfcb9a,
+        type: 2}
+      propertyPath: m_LayoutPriority
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f722d6a84e5af441a017ad2f9cfcb9a, type: 2}
   m_IsPrefabAsset: 0
@@ -762,12 +772,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1238836990352302, guid: c983112bc973aae4fb2a19d8b086e190, type: 2}
       propertyPath: m_TagString
-      value: Trash
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 114916323508967646, guid: c983112bc973aae4fb2a19d8b086e190,
         type: 2}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1361773582405552, guid: c983112bc973aae4fb2a19d8b086e190, type: 2}
+      propertyPath: m_TagString
+      value: Trash
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114916323508967646, guid: c983112bc973aae4fb2a19d8b086e190, type: 2}
@@ -886,12 +900,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1238836990352302, guid: c983112bc973aae4fb2a19d8b086e190, type: 2}
       propertyPath: m_TagString
-      value: Playlist
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 114916323508967646, guid: c983112bc973aae4fb2a19d8b086e190,
         type: 2}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1361773582405552, guid: c983112bc973aae4fb2a19d8b086e190, type: 2}
+      propertyPath: m_TagString
+      value: Playlist
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114916323508967646, guid: c983112bc973aae4fb2a19d8b086e190, type: 2}
@@ -1128,8 +1146,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicList: {fileID: 1334883372}
   contactList: {fileID: 1764320448}
-  Songs: []
-  Contacts: []
 --- !u!1001 &920632132
 Prefab:
   m_ObjectHideFlags: 0
@@ -1238,6 +1254,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1540494001166666, guid: 5f722d6a84e5af441a017ad2f9cfcb9a, type: 2}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114332055987025258, guid: 5f722d6a84e5af441a017ad2f9cfcb9a,
+        type: 2}
+      propertyPath: m_LayoutPriority
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1589,6 +1610,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114332055987025258, guid: 5f722d6a84e5af441a017ad2f9cfcb9a,
+        type: 2}
+      propertyPath: m_LayoutPriority
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f722d6a84e5af441a017ad2f9cfcb9a, type: 2}
   m_IsPrefabAsset: 0
@@ -1702,6 +1728,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114332055987025258, guid: 5f722d6a84e5af441a017ad2f9cfcb9a,
+        type: 2}
+      propertyPath: m_LayoutPriority
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f722d6a84e5af441a017ad2f9cfcb9a, type: 2}
   m_IsPrefabAsset: 0
@@ -1808,7 +1839,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1238836990352302, guid: c983112bc973aae4fb2a19d8b086e190, type: 2}
       propertyPath: m_TagString
-      value: MusicList
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 1361773582405552, guid: c983112bc973aae4fb2a19d8b086e190, type: 2}
       propertyPath: m_TagString
@@ -2400,6 +2431,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114332055987025258, guid: 5f722d6a84e5af441a017ad2f9cfcb9a,
+        type: 2}
+      propertyPath: m_LayoutPriority
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f722d6a84e5af441a017ad2f9cfcb9a, type: 2}
   m_IsPrefabAsset: 0
@@ -2579,6 +2615,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114332055987025258, guid: 5f722d6a84e5af441a017ad2f9cfcb9a,
+        type: 2}
+      propertyPath: m_LayoutPriority
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f722d6a84e5af441a017ad2f9cfcb9a, type: 2}
   m_IsPrefabAsset: 0
@@ -2690,12 +2731,21 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1238836990352302, guid: c983112bc973aae4fb2a19d8b086e190, type: 2}
       propertyPath: m_TagString
-      value: ContactList
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 114916323508967646, guid: c983112bc973aae4fb2a19d8b086e190,
         type: 2}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114949656292480786, guid: c983112bc973aae4fb2a19d8b086e190,
+        type: 2}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1361773582405552, guid: c983112bc973aae4fb2a19d8b086e190, type: 2}
+      propertyPath: m_TagString
+      value: ContactList
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114916323508967646, guid: c983112bc973aae4fb2a19d8b086e190, type: 2}
@@ -2819,12 +2869,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1238836990352302, guid: c983112bc973aae4fb2a19d8b086e190, type: 2}
       propertyPath: m_TagString
-      value: Shortcuts
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 114916323508967646, guid: c983112bc973aae4fb2a19d8b086e190,
         type: 2}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1361773582405552, guid: c983112bc973aae4fb2a19d8b086e190, type: 2}
+      propertyPath: m_TagString
+      value: Shortcuts
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114916323508967646, guid: c983112bc973aae4fb2a19d8b086e190, type: 2}

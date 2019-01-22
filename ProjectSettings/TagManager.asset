@@ -9,6 +9,8 @@ TagManager:
   - Shortcuts
   - Playlist
   - Trash
+  - Song
+  - Contact
   layers:
   - Default
   - TransparentFX

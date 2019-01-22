@@ -2,10 +2,10 @@
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler {
+public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler {
 
-    public GameObject UIElementPrefab;
     public int elementID;
+    public ElementType elementType;
 
     //[HideInInspector]
     public Transform parentToReturnTo;
@@ -25,7 +25,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnBeginDrag(PointerEventData eventData) 
     {
-        Debug.Log("Drag begin");
+        //Debug.Log("Drag begin");
 
         startParent = this.transform.parent;
         parentToReturnTo = startParent;
@@ -34,12 +34,13 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
         //Remove the object being dragged from the current list to prevent it from being Masked by the list
         this.transform.SetParent(parentToReturnTo.parent);
-        this.GetComponent<Image>().raycastTarget = false;
 
         replacementUIElement = Instantiate(this.gameObject);
         replacementUIElement.transform.SetParent(startParent);
         replacementUIElement.transform.position = startPosition;
         replacementUIElement.transform.SetSiblingIndex(startSiblingIndex);
+
+        this.GetComponent<Image>().raycastTarget = false;
     }
 
     public void OnDrag(PointerEventData eventData) 
@@ -50,7 +51,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnEndDrag(PointerEventData eventData) 
     {
-        Debug.Log("Drag end");
+        //Debug.Log("Drag end");
 
         if (parentToReturnTo != startParent)
         {
@@ -62,13 +63,39 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             this.transform.SetParent(startParent);
             this.transform.position = startPosition;
             this.transform.SetSiblingIndex(startSiblingIndex);
-            Debug.Log(this.transform.GetSiblingIndex());
 
-            Debug.Log("Returning back to start position");
+            //Debug.Log(this.transform.GetSiblingIndex());
+            //Debug.Log("Returning back to start position");
 
             Destroy(replacementUIElement);
         }
 
         this.GetComponent<Image>().raycastTarget = true;
     }
+
+    public void DestroyReplacementUIElement()
+    {
+        Destroy(replacementUIElement);
+    }
+
+
+    //for song sharing
+    public void OnDrop(PointerEventData eventData)
+    {
+        Draggable draggable = eventData.pointerDrag.GetComponent<Draggable>();
+        if (elementType == ElementType.Contact)
+        {
+            if (draggable.elementType == ElementType.Song)
+            {
+                Debug.Log(draggable.GetComponentInChildren<Text>().text + " --> SHARED with --> " + this.gameObject.GetComponentInChildren<Text>().text);
+            }
+        }
+        if (eventData.pointerDrag != null)
+        {
+            Destroy(draggable.gameObject);
+        }
+        else
+            return;
+    }
+
 }

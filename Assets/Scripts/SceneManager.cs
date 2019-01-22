@@ -28,7 +28,7 @@ public class SceneManager : MonoBehaviour {
         {
             Songs[i] = new ListElement();
             Songs[i].id = musicList.GetChild(0).GetChild(i).GetComponent<Draggable>().elementID = i;
-            Songs[i].elementType = ElementType.Song;
+            Songs[i].elementType = musicList.GetChild(0).GetChild(i).GetComponent<Draggable>().elementType = ElementType.Song;
             Songs[i].elementState = ElementState.notInAnyList;
             musicList.GetChild(0).GetChild(i).GetChild(0).GetComponent<Text>().text = "Song " + Songs[i].id;
         }
@@ -37,7 +37,7 @@ public class SceneManager : MonoBehaviour {
         {
             Contacts[i] = new ListElement();
             Contacts[i].id = contactList.GetChild(0).GetChild(i).GetComponent<Draggable>().elementID = i;
-            Contacts[i].elementType = ElementType.Contact;
+            Contacts[i].elementType = contactList.GetChild(0).GetChild(i).GetComponent<Draggable>().elementType = ElementType.Contact;
             Contacts[i].elementState = ElementState.notInAnyList;
             contactList.GetChild(0).GetChild(i).GetChild(0).GetComponent<Text>().text = "Contact " + Contacts[i].id;
         }
