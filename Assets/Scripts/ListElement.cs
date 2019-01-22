@@ -14,7 +14,8 @@ public enum ElementState
     notInAnyList = 0,
     isInPlaylist = 1,
     isInShortcuts = 2,
-    isRemoved = 3
+    inBothLists = 3,
+    isRemoved = 4
 }
 
 [System.Serializable]

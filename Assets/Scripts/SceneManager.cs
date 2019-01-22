@@ -7,10 +7,8 @@ public class SceneManager : MonoBehaviour {
     
     public Transform musicList;
     public Transform contactList;
-    [SerializeField]
-    private ListElement[] Songs;
-    [SerializeField]
-    private ListElement[] Contacts;
+    public static ListElement[] Songs;
+    public static ListElement[] Contacts;
     bool isInitialized = false;
 
 
@@ -29,18 +27,18 @@ public class SceneManager : MonoBehaviour {
         for (int i = 0; i < musicList.GetChild(0).childCount; i++)
         {
             Songs[i] = new ListElement();
-            Songs[i].id = i;
+            Songs[i].id = musicList.GetChild(0).GetChild(i).GetComponent<Draggable>().elementID = i;
             Songs[i].elementType = ElementType.Song;
-            musicList.GetChild(0).GetChild(i).GetComponent<ElementPropertyManager>().elementProperties = Songs[i];
+            Songs[i].elementState = ElementState.notInAnyList;
             musicList.GetChild(0).GetChild(i).GetChild(0).GetComponent<Text>().text = "Song " + Songs[i].id;
         }
 
         for (int i = 0; i < contactList.GetChild(0).childCount; i++)
         {
             Contacts[i] = new ListElement();
-            Contacts[i].id = i;
+            Contacts[i].id = contactList.GetChild(0).GetChild(i).GetComponent<Draggable>().elementID = i;
             Contacts[i].elementType = ElementType.Contact;
-            contactList.GetChild(0).GetChild(i).GetComponent<ElementPropertyManager>().elementProperties = Contacts[i];
+            Contacts[i].elementState = ElementState.notInAnyList;
             contactList.GetChild(0).GetChild(i).GetChild(0).GetComponent<Text>().text = "Contact " + Contacts[i].id;
         }
     }

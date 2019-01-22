@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class ElementPropertyManager : MonoBehaviour {
 
+
     public ListElement elementProperties;
 
 	// Use this for initialization
-	void Start () {
-		
+	void Start () 
+    {
+	    	
 	}
 	
 	// Update is called once per frame

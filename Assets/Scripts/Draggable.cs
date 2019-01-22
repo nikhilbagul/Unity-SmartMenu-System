@@ -4,78 +4,71 @@ using UnityEngine.EventSystems;
 
 public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler {
 
+    public GameObject UIElementPrefab;
+    public int elementID;
 
-    public Transform listElementPrefab;
-
-    [HideInInspector]
+    //[HideInInspector]
     public Transform parentToReturnTo;
-    [HideInInspector]
-    public Transform placeHolderParent;
-    [HideInInspector]
-    public GameObject replacingListItem;
+    //[HideInInspector]
+    public Transform startParent;
+    //[HideInInspector]
+    public Vector3 startPosition;
+
+    private GameObject replacementUIElement;
+    private int startSiblingIndex;
 
     void Awake()
-    { 
+    {
+
     }
 
-    public void OnBeginDrag(PointerEventData eventData) {
 
-        if (this.GetComponent<ElementPropertyManager>().elementProperties.elementState == ElementState.notInAnyList)
-        {
-            replacingListItem = Instantiate(this.gameObject, this.transform.parent);
-            replacingListItem.AddComponent<ElementPropertyManager>();
-            replacingListItem.GetComponent<ElementPropertyManager>().elementProperties = this.GetComponent<ElementPropertyManager>().elementProperties;
+    public void OnBeginDrag(PointerEventData eventData) 
+    {
+        Debug.Log("Drag begin");
 
-            //replacingListItem.transform.SetParent(transform.parent);
-            //LayoutElement le = replacingListItem.AddComponent<LayoutElement>();
-            //le.preferredWidth = GetComponent<LayoutElement>().preferredWidth;
-            //le.preferredHeight = GetComponent<LayoutElement>().preferredHeight;
-            //le.flexibleWidth = 0;
-            //le.flexibleHeight = 0;
+        startParent = this.transform.parent;
+        parentToReturnTo = startParent;
+        startPosition = this.transform.position;
+        startSiblingIndex = this.transform.GetSiblingIndex();
 
-            replacingListItem.transform.SetSiblingIndex(transform.GetSiblingIndex());
+        //Remove the object being dragged from the current list to prevent it from being Masked by the list
+        this.transform.SetParent(parentToReturnTo.parent);
+        this.GetComponent<Image>().raycastTarget = false;
 
-            parentToReturnTo = transform.parent;
-            placeHolderParent = parentToReturnTo;
-            transform.SetParent(transform.parent.parent);
-
-            GetComponent<CanvasGroup>().blocksRaycasts = false;    
-        }
+        replacementUIElement = Instantiate(this.gameObject);
+        replacementUIElement.transform.SetParent(startParent);
+        replacementUIElement.transform.position = startPosition;
+        replacementUIElement.transform.SetSiblingIndex(startSiblingIndex);
     }
 
     public void OnDrag(PointerEventData eventData) 
     {
-        transform.position = eventData.position;
-
-        //if (replacingListItem.transform.parent != placeHolderParent)
-        //{
-        //    replacingListItem.transform.SetParent(placeHolderParent);
-        //}
-        
-        int newSiblingIndex = placeHolderParent.childCount;
-
-		//reorder items in the same list
-        for (int i = 0; i < placeHolderParent.childCount; i++)
-        {
-            if (transform.position.y > placeHolderParent.GetChild(i).position.y)
-            {
-                newSiblingIndex = i;
-
-                //if (replacingListItem.transform.GetSiblingIndex() < newSiblingIndex)
-                    //newSiblingIndex--;                
-                break;
-            }
-        }
-
-        //replacingListItem.transform.SetSiblingIndex(newSiblingIndex);
+        //Debug.Log("Dragging");
+        this.transform.position = eventData.position;
     }
 
-    public void OnEndDrag(PointerEventData eventData) {
-        transform.SetParent(parentToReturnTo);
-        transform.SetSiblingIndex(replacingListItem.transform.GetSiblingIndex());
-        GetComponent<CanvasGroup>().blocksRaycasts = true;
+    public void OnEndDrag(PointerEventData eventData) 
+    {
+        Debug.Log("Drag end");
 
-        if (this.GetComponent<ElementPropertyManager>().elementProperties.elementState == ElementState.isRemoved)
-            Destroy(replacingListItem);
+        if (parentToReturnTo != startParent)
+        {
+            //Drop to another list
+            this.transform.SetParent(parentToReturnTo);
+        }
+        else
+        {
+            this.transform.SetParent(startParent);
+            this.transform.position = startPosition;
+            this.transform.SetSiblingIndex(startSiblingIndex);
+            Debug.Log(this.transform.GetSiblingIndex());
+
+            Debug.Log("Returning back to start position");
+
+            Destroy(replacementUIElement);
+        }
+
+        this.GetComponent<Image>().raycastTarget = true;
     }
 }

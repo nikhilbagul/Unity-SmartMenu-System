@@ -40,7 +40,6 @@ GameObject:
   - component: {fileID: 114426481945157990}
   - component: {fileID: 114719313078283396}
   - component: {fileID: 114332055987025258}
-  - component: {fileID: 225544211061446996}
   m_Layer: 5
   m_Name: ListEntry
   m_TagString: Untagged
@@ -66,7 +65,7 @@ MonoBehaviour:
   m_PreferredHeight: 80
   m_FlexibleWidth: 0
   m_FlexibleHeight: 0
-  m_LayoutPriority: 1
+  m_LayoutPriority: 10
 --- !u!114 &114426481945157990
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -105,9 +104,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f99c8672a14b4cf48b9b0d28a56d9e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 0
-  parentToReturnTo: {fileID: 0}
-  placeHolderParent: {fileID: 0}
+  listElementPrefab: {fileID: 224358784607791202, guid: bcdb57d3228d342e6930fdff60169065,
+    type: 2}
+  startParent: {fileID: 0}
+  startPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &114789647009903994
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -192,14 +192,3 @@ RectTransform:
   m_AnchoredPosition: {x: 150, y: -270}
   m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!225 &225544211061446996
-CanvasGroup:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1540494001166666}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
