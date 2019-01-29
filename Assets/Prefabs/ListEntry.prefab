@@ -65,7 +65,7 @@ MonoBehaviour:
   m_PreferredHeight: 80
   m_FlexibleWidth: 0
   m_FlexibleHeight: 0
-  m_LayoutPriority: 10
+  m_LayoutPriority: 1
 --- !u!114 &114426481945157990
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -104,11 +104,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f99c8672a14b4cf48b9b0d28a56d9e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elementID: 0
-  elementType: 0
   parentToReturnTo: {fileID: 0}
-  startParent: {fileID: 0}
-  startPosition: {x: 0, y: 0, z: 0}
+  placeHolderParent: {fileID: 0}
+  original: {fileID: 0}
+  itemType: 0
 --- !u!114 &114789647009903994
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -141,7 +140,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Song
+  m_Text: Song 1
 --- !u!222 &222791697650799728
 CanvasRenderer:
   m_ObjectHideFlags: 1
