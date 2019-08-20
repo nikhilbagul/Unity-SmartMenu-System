@@ -1,6 +1,6 @@
 # Unity-SmartMenu-System
 
-The project contains a menu system with the following tyoes of Menus: 
+The project contains a menu system with the following types of Menus: 
 
 1. Media
 2. Contacts
