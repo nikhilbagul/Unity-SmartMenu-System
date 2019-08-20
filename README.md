@@ -1,6 +1,6 @@
 # Unity-SmartMenu-System
 
-The project contains a menu system with the following features: 
+The project contains a menu system with the following tyoes of Menus: 
 
 1. Media
 2. Contacts
@@ -55,6 +55,7 @@ The project contains a menu system with the following features:
 > - This list contains UI elements that are containers to media items like soundtracks and contact cards
 > - This list will never have any duplicate items
 > - All the elements in this list are draggable and snap back if not dropped onto a target
+
 
 
 
